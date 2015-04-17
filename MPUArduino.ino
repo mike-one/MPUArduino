@@ -103,21 +103,23 @@ void loop() {
   leerMapearAcelerometrosGiroscopios();
   leerEstadoBotones();
 
-
-    Serial.print("\t\tax1:");
-    Serial.print(ax1);
-    Serial.print("\t\tay1:");
-    Serial.print(ay1);
-    Serial.print("\t\taz1:");
-    Serial.print(az1);
+if(gx1==0 || gx1 ==1000){
     Serial.print("\t\tgx1:");
     Serial.print(gx1);
+}
+if(gy1==0 || gy1 ==1000){
     Serial.print("\t\tgy1:");
     Serial.print(gy1);
+}
+if(gz1==0 || gz1 ==1000){
     Serial.print("\t\tgz1:");
     Serial.print(gz1);
-    Serial.print("\t\tboton1:");
-    Serial.println(estadoBoton1);
+}
+if(gx1==0 || gx1 ==1000 || gy1==0 || gy1 ==1000 || gz1==0 || gz1 ==1000 )
+  Serial.print("\n"); 
+//    Serial.print("\t\tboton1:");
+//    Serial.println(estadoBoton1);
+
 
 
 /*
@@ -253,19 +255,19 @@ void leerMapearAcelerometrosGiroscopios() {
   accelgyro2.getMotion6(&ax2, &ay2, &az2, &gx2, &gy2, &gz2);    // Lee valores en bruto del acelerómetro 2
 
   // Las siguientes líneas convierte todos los valores que llega a dar el acelerómetro y giroscopio a valores entre 0 y 9
-  ax1 = map(ax1, -32768, 32767, 0, 100);
-  ay1 = map(ay1, -32768, 32767, 0, 100);
-  az1 = map(az1, -32768, 32767, 0, 100);
-  gx1 = map(gx1, -32768, 32767, 0, 359);
-  gy1 = map(gy1, -32768, 32767, 0, 359);
-  gz1 = map(gz1, -32768, 32767, 0, 359);
+  ax1 = map(ax1, -32768, 32767, 0, 1000);
+  ay1 = map(ay1, -32768, 32767, 0, 1000);
+  az1 = map(az1, -32768, 32767, 0, 1000);
+  gx1 = map(gx1, -32768, 32767, 0, 1000);
+  gy1 = map(gy1, -32768, 32767, 0, 1000);
+  gz1 = map(gz1, -32768, 32767, 0, 1000);
 
-  ax2 = map(ax2, -32768, 32767, 0, 20);
-  ay2 = map(ay2, -32768, 32767, 0, 20);
-  az2 = map(az2, -32768, 32767, 0, 20);
-  gx2 = map(gx2, -32768, 32767, 0, 20);
-  gy2 = map(gy2, -32768, 32767, 0, 20);
-  gz2 = map(gz2, -32768, 32767, 0, 20);
+  ax2 = map(ax2, -32768, 32767, 0, 1000);
+  ay2 = map(ay2, -32768, 32767, 0, 1000);
+  az2 = map(az2, -32768, 32767, 0, 1000);
+  gx2 = map(gx2, -32768, 32767, 0, 1000);
+  gy2 = map(gy2, -32768, 32767, 0, 1000);
+  gz2 = map(gz2, -32768, 32767, 0, 1000);
 }
 
 
